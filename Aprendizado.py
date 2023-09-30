@@ -79,9 +79,8 @@ experiencia_por_area = {
     }
 }
 class ÁreasSegurança:
-  def __init__(self,area,salario):
-    self.area = area
-    self.salario = salario
+  def __init__(self):
+    self.area = None
   def get_apresentacao_areas(self):
     print("*================= ÁREAS DE SEGURANÇA CIBERNÉTICA ===============*\n")
     sleep(2)
@@ -96,11 +95,13 @@ class ÁreasSegurança:
 
   def analise_experiencia(self):
     print("\n")
-    print(f"\nVocê escolheu se especializar em {self.area}.")
-    experiencia_area = experiencia_por_area[self.area]
-    print(f"Experiência necessária para {self.area}: {experiencia_area}")
+    if self.area is not None:
+      print(f"\nVocê escolheu se especializar em {self.area}.")
+      experiencia_area = experiencia_por_area.get(self.area, {}).get("Junior")
+      print(f"Experiência necessária para {self.area}: {experiencia_area}")
 
-teste = Áreas_Segurança('','')
+
+teste = ÁreasSegurança()
 variavel = teste.get_apresentacao_areas()
 print(variavel)
 variavel1 = teste.analise_experiencia()
